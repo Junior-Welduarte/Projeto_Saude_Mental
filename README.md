@@ -31,6 +31,7 @@ O conjunto de dados possui 2 arquivos:
 | part          | PARTNERSHIP STATUS : Do you have a partner? | 0=No; 1=Yes |
 | job           | HAVING A JOB : Do you have a paid job? | 0=No; 1=Yes |
 
+
 ## ETAPA 2
 ### Preparação dos dados
 #### Importação e Criação do DataFrame
@@ -44,6 +45,19 @@ df = pd.DataFrame(dados)
 ````
 
 #### Substituição de Valores Usando o Codebook Como Parâmetro
+
+Nossa base de dados contém várias variáveis representadas por valores numéricos, como gênero, ano do currículo e língua materna. Por exemplo:
+- Na variável de gênero, temos `1` para "Homem", `2` para "Mulher" e `3` para "Não-binário".
+
+Para melhorar a compreensão e a análise desses dados, decidi criar um dicionário de mapeamento. Este dicionário serve para:
+
+1. **Converter Números em Letras**: Ele traduz os identificadores numéricos em suas representações textuais usando o Codebook como parâmetro, facilitando a leitura e interpretação dos dados.
+
+2. **Uniformizar a Representação**: Ao usar um mapeamento consistente, garantimos que os mesmos valores sejam interpretados de forma igual em todas as análises, evitando confusões e erros.
+
+3. **Aumentar a Eficiência nas Análises**: O uso desse dicionário nos permite realizar substituições de forma rápida e organizada, tornando o nosso código mais claro e fácil de manter.
+
+
 **Primeiro, excluímos colunas nulas do codebook:**
 ``` python
 del codebook['Unnamed: 3']
@@ -67,6 +81,9 @@ for _, row in codebook.iterrows():
         (item.split('=') for item in variable_labels.split(';'))
     }
 ```
+Assim, inserimos no dicionário as seguintes informações:
+{'year': {1: 'Bmed1', 2: 'Bmed2', 3: 'Bmed3', 4: 'Mmed1', 5: 'Mmed2', 6: 'Mmed3'}, 'sex': {1: 'Man', 2: 'Woman', 3: 'Non-binary'}, 'glang': {1: 'French', 15: 'German', 20: 'English', 37: 'Arab', 51: 'Basque'...}
+
 **Agora, substituimos os valores no DataFrame usando o mapeamento:**
 ```` python
 # Substituindo valores no DataFrame
