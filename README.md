@@ -212,7 +212,7 @@ Essa seção apresenta informações sobre como os indivíduos avaliam sua próp
   - Gráfico de barras para exibir a contagem de cada nível de satisfação com a saúde.
   - Gráfico de barras comparando a satisfação com a saúde por gênero e faixa etária.
 
-![Gráficos de Satisfação com a Saúde](https://github.com/RitzyTr/Projeto_Saude_Mental/blob/RitzyTr-patch-1/parte%201.png)
+![Gráficos de Satisfação com a Saúde](https://github.com/Junior-Welduarte/Projeto_Saude_Mental/blob/main/Imagem_Dashboard_Parte1.png)
 
 ### 2. Relação de Níveis de Depressão
 Essa seção analisa os níveis de depressão e sua correlação com outras variáveis, como ansiedade e faixa etária.
@@ -223,7 +223,7 @@ Essa seção analisa os níveis de depressão e sua correlação com outras vari
   - Tabela para exibir a média de depressão conforme os gênero e faixa etária.
   - Gráfico de dispersão para ilustrar a correlação entre ansiedade e depressão (R² = 0.51).
 
-![Gráficos de Depressão](https://github.com/RitzyTr/Projeto_Saude_Mental/blob/RitzyTr-patch-1/parte%202.png)
+![Gráficos de Depressão](https://github.com/Junior-Welduarte/Projeto_Saude_Mental/blob/main/Imagem_Dashboard_Parte2.png)
 
 ## ETAPA 5
 ### Principais Insights
