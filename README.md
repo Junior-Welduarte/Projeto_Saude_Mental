@@ -198,3 +198,27 @@ END
 ````
 Essa métrica classifica os participantes de acordo com o nível de ansiedade que eles experienciam.
 
+## ETAPA 4
+### Estrutura do Dashboard
+
+O dashboard está dividido em duas principais seções, cada uma abordando diferentes aspectos da saúde mental:
+
+### 1. Distribuição e Relação com Satisfação de Saúde
+Essa seção apresenta informações sobre como os indivíduos avaliam sua própria saúde e como essa percepção varia de acordo com o gênero.
+
+- **Gráficos Utilizados:**
+  - Gráficos de pizza para representar a distribuição da satisfação com a saúde para mulheres, homens e pessoas não binárias.
+  - Gráfico de barras para exibir a contagem de cada nível de satisfação com a saúde.
+  - Gráfico de barras comparando a satisfação com a saúde por gênero e faixa etária.
+
+![Gráficos de Satisfação com a Saúde](caminho/para/imagem1.png)
+
+### 2. Relação de Níveis de Depressão
+Essa seção analisa os níveis de depressão e sua correlação com outras variáveis, como ansiedade e faixa etária.
+
+- **Gráficos Utilizados:**
+  - Gráficos de barras empilhadas para mostrar a distribuição dos níveis de depressão por gênero.
+  - Tabela para exibir a média de depressão conforme os níveis de ansiedade e faixa etária.
+  - Gráfico de dispersão para ilustrar a correlação entre ansiedade e depressão (R² = 0.51).
+
+![Gráficos de Depressão](caminho/para/imagem2.png)
