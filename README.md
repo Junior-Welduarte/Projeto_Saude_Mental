@@ -114,3 +114,87 @@ Após uma análise detalhada da base de dados, verificou-se que não havia valor
 ## ETAPA 3
 
 ### Contextualizando os dados e criando métricas
+
+A seguir, explico as métricas que foram criadas a partir dos dados originais do conjunto. Estas métricas foram desenvolvidas no **Looker Studio** utilizando **campos calculados**, permitindo agrupar, categorizar e tirar insights relevantes para facilitar a análise dos dados.
+
+#### Faixas de Idade (age)
+
+Para agrupar a idade dos participantes, criamos uma categorização no campo calculado do Looker Studio que facilita a análise dos diferentes grupos etários. A categorização é feita da seguinte forma:
+
+```sql
+CASE
+    WHEN age > 40 THEN "Mais de 40"
+    WHEN age BETWEEN 30 AND 40 THEN "31 a 40 anos"
+    WHEN age < 30 THEN "Até 30 anos"
+END
+````
+Essa divisão permite analisar as variáveis de saúde mental com base em diferentes faixas etárias.
+
+#### MBI Cinismo (mbi_cy)
+O **MBI Cinismo** é uma medida de cinismo profissional, avaliada pelo Maslach Burnout Inventory. A categorização da escala foi realizada no campo calculado do Looker Studio com base nos seguintes intervalos:
+````sql
+CASE
+    WHEN mbi_cy < 6 THEN "Baixo"
+    WHEN mbi_cy BETWEEN 6 AND 12 THEN "Médio"
+    WHEN mbi_cy > 12 THEN "Alto"
+END
+````
+Essas faixas são usadas para entender o nível de distanciamento e desinteresse que os participantes têm em relação ao seu trabalho.
+
+#### MBI Exaustão Emocional (mbi_ex)
+O **MBI Exaustão Emocional** mede o grau de cansaço emocional e físico causado pelo estresse no trabalho. A categorização foi feita no campo calculado do Looker Studio da seguinte forma:
+```sql
+CASE
+    WHEN mbi_ex < 19 THEN "Baixo"
+    WHEN mbi_ex BETWEEN 19 AND 27 THEN "Médio"
+    WHEN mbi_ex > 27 THEN "Alto"
+END
+````
+Essa métrica ajuda a identificar o nível de desgaste emocional que os participantes experimentam.
+
+#### MBI Realização Pessoal (mbi_ea)
+O **MBI Realização Pessoal** mede o nível de satisfação e realização no trabalho. A categorização da escala é:
+````sql
+CASE
+    WHEN mbi_ea < 24 THEN "Baixo"
+    WHEN mbi_ea BETWEEN 24 AND 31 THEN "Médio"
+    WHEN mbi_ea > 31 THEN "Alto"
+END
+````
+Essa métrica permite entender o nível de satisfação profissional dos participantes.
+
+#### Métrica Burnout
+A **Métrica Burnout** foi criada combinando as três dimensões do Maslach Burnout Inventory: Exaustão Emocional, Cinismo e Realização Pessoal. As faixas de Burnout foram definidas no campo calculado do Looker Studio da seguinte maneira:
+````sql
+CASE
+    WHEN mbi_ex = "Baixo" AND mbi_cy = "Baixo" AND mbi_ea = "Alto" THEN "Baixo Burnout"
+    WHEN mbi_ex = "Médio" AND mbi_cy = "Médio" AND mbi_ea = "Médio" THEN "Médio Burnout"
+    WHEN mbi_ex = "Alto" AND mbi_cy = "Alto" AND mbi_ea = "Baixo" THEN "Alto Burnout"
+    ELSE "Médio Burnout"
+END
+````
+Essa métrica é usada para entender o grau geral de burnout dos participantes, combinando os três aspectos avaliados.
+
+#### Níveis de Depressão (cesd)
+O **CESD (Center for Epidemiologic Studies Depression Scale)** é usado para medir sintomas de depressão. A categorização da escala foi realizada no campo calculado do Looker Studio da seguinte forma:
+````sql
+CASE 
+    WHEN cesd BETWEEN 0 AND 9 THEN "1-Não Deprimido"
+    WHEN cesd BETWEEN 10 AND 15 THEN "2-Leve"
+    WHEN cesd BETWEEN 16 AND 24 THEN "3-Moderado"
+    WHEN cesd > 24 THEN "4-Severo"
+END
+````
+Essa métrica classifica os participantes com base na gravidade de sintomas depressivos.
+
+#### Nível de Ansiedade (stai_t)
+O **STAI (State-Trait Anxiety Inventory)** mede o nível de ansiedade dos participantes. A categorização foi feita no campo calculado do Looker Studio da seguinte forma:
+````sql
+CASE
+    WHEN stai_t BETWEEN 20 AND 40 THEN "1-Leve"
+    WHEN stai_t BETWEEN 40 AND 60 THEN "2-Moderada"
+    WHEN stai_t > 60 THEN "3-Alta"
+END
+````
+Essa métrica classifica os participantes de acordo com o nível de ansiedade que eles experienciam.
+
